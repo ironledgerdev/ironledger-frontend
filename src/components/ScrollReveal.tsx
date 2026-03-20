@@ -14,8 +14,13 @@ const ScrollReveal = ({ children, className = "", delay = 0 }: ScrollRevealProps
     const el = ref.current;
     if (!el) return;
     const observer = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) { setVisible(true); observer.unobserve(el); } },
-      { threshold: 0.15 }
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true);
+          observer.unobserve(el);
+        }
+      },
+      { threshold: 0.12 }
     );
     observer.observe(el);
     return () => observer.disconnect();
@@ -27,7 +32,7 @@ const ScrollReveal = ({ children, className = "", delay = 0 }: ScrollRevealProps
       className={className}
       style={{
         opacity: visible ? 1 : 0,
-        transform: visible ? "translateY(0)" : "translateY(20px)",
+        transform: visible ? "translateY(0)" : "translateY(24px)",
         filter: visible ? "blur(0)" : "blur(4px)",
         transition: `all 0.7s cubic-bezier(0.16,1,0.3,1) ${delay}ms`,
       }}
