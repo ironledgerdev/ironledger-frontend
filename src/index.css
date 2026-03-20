@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,44 +6,45 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 220 20% 10%;
+    --background: 225 25% 5%;
+    --foreground: 210 40% 96%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 220 20% 10%;
+    --card: 225 20% 8%;
+    --card-foreground: 210 40% 96%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 220 20% 10%;
+    --popover: 225 20% 8%;
+    --popover-foreground: 210 40% 96%;
 
-    --primary: 215 80% 48%;
+    --primary: 210 100% 56%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 220 14% 96%;
-    --secondary-foreground: 220 20% 10%;
+    --secondary: 225 15% 14%;
+    --secondary-foreground: 210 40% 96%;
 
-    --muted: 220 14% 96%;
-    --muted-foreground: 220 10% 46%;
+    --muted: 225 15% 14%;
+    --muted-foreground: 215 15% 55%;
 
-    --accent: 215 80% 48%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 190 95% 50%;
+    --accent-foreground: 225 25% 5%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 220 13% 91%;
-    --input: 220 13% 91%;
-    --ring: 215 80% 48%;
+    --border: 225 15% 16%;
+    --input: 225 15% 16%;
+    --ring: 210 100% 56%;
 
-    --radius: 0.625rem;
+    --radius: 0.75rem;
 
     /* Custom tokens */
-    --surface-dark: 220 20% 7%;
-    --surface-dark-foreground: 220 14% 96%;
-    --surface-elevated: 220 14% 98%;
-    --gradient-blue: 215 80% 48%;
-    --gradient-blue-light: 205 85% 58%;
-    --steel: 220 10% 46%;
-    --steel-light: 220 14% 72%;
+    --glow-blue: 210 100% 56%;
+    --glow-cyan: 190 95% 50%;
+    --surface-glass: 225 20% 10%;
+    --surface-glass-border: 225 15% 18%;
+    --steel: 215 15% 45%;
+    --steel-light: 215 12% 60%;
+    --gradient-start: 210 100% 56%;
+    --gradient-end: 190 95% 50%;
   }
 }
 
@@ -62,26 +63,137 @@
 }
 
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-  .text-pretty {
-    text-wrap: pretty;
-  }
+  .text-balance { text-wrap: balance; }
+  .text-pretty { text-wrap: pretty; }
 }
 
-/* Scroll reveal animation */
+/* Tech grid background */
+.bg-grid {
+  background-image: 
+    linear-gradient(to right, hsl(225 15% 12%) 1px, transparent 1px),
+    linear-gradient(to bottom, hsl(225 15% 12%) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+.bg-grid-fine {
+  background-image: 
+    linear-gradient(to right, hsl(225 15% 10%) 1px, transparent 1px),
+    linear-gradient(to bottom, hsl(225 15% 10%) 1px, transparent 1px);
+  background-size: 30px 30px;
+}
+
+/* Glass card */
+.glass-card {
+  background: hsl(225 20% 8% / 0.8);
+  border: 1px solid hsl(225 15% 18%);
+  backdrop-filter: blur(20px);
+}
+
+.glass-card:hover {
+  border-color: hsl(210 100% 56% / 0.3);
+  box-shadow: 0 0 30px hsl(210 100% 56% / 0.08);
+}
+
+/* Glow effects */
+.glow-blue {
+  box-shadow: 0 0 40px hsl(210 100% 56% / 0.15), 0 0 80px hsl(210 100% 56% / 0.05);
+}
+
+.glow-text {
+  text-shadow: 0 0 40px hsl(210 100% 56% / 0.4);
+}
+
+.glow-line {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, hsl(210 100% 56% / 0.6), hsl(190 95% 50% / 0.6), transparent);
+}
+
+/* Gradient text */
+.text-gradient {
+  background: linear-gradient(135deg, hsl(210 100% 56%), hsl(190 95% 50%));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Animated gradient border */
+.gradient-border {
+  position: relative;
+}
+.gradient-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  padding: 1px;
+  border-radius: inherit;
+  background: linear-gradient(135deg, hsl(210 100% 56% / 0.5), hsl(190 95% 50% / 0.3), transparent);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* Watermark */
+.watermark {
+  position: fixed;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.02;
+  filter: grayscale(1) brightness(2);
+}
+
+/* Scan line animation */
+@keyframes scan {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
+}
+
+.scan-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, hsl(210 100% 56% / 0.3), transparent);
+  animation: scan 8s linear infinite;
+}
+
+/* Pulse dot */
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 hsl(145 65% 50% / 0.7); }
+  50% { opacity: 0.8; box-shadow: 0 0 0 6px hsl(145 65% 50% / 0); }
+}
+
+.pulse-live {
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+/* Typing cursor */
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+.typing-cursor::after {
+  content: '|';
+  animation: blink 1s step-end infinite;
+  color: hsl(210 100% 56%);
+  font-weight: 300;
+}
+
+/* Float animation */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Reveal animations */
 @keyframes reveal-up {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-    filter: blur(4px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-    filter: blur(0);
-  }
+  from { opacity: 0; transform: translateY(24px); filter: blur(4px); }
+  to { opacity: 1; transform: translateY(0); filter: blur(0); }
 }
 
 @keyframes fade-in {
@@ -94,5 +206,28 @@
 }
 
 .animate-fade-in {
-  animation: fade-in 0.6s ease-out both;
+  animation: fade-in 0.5s ease-out both;
+}
+
+/* Count-up number styling */
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Hover lift */
+.hover-lift {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+}
+.hover-lift:hover {
+  transform: translateY(-4px);
+}
+
+/* Marquee */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
 }
