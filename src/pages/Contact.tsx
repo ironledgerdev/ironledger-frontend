@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import ScrollReveal from "@/components/ScrollReveal";
-import { Mail, Send } from "lucide-react";
+import { Mail, Send, ArrowRight } from "lucide-react";
 
 const Contact = () => {
   const [submitted, setSubmitted] = useState(false);
@@ -91,8 +91,5 @@ const Contact = () => {
     </main>
   );
 };
-
-// Need to import ArrowRight
-import { ArrowRight } from "lucide-react";
 
 export default Contact;
