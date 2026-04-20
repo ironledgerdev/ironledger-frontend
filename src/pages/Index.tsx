@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import ScrollReveal from "@/components/ScrollReveal";
 import ClientsSection from "@/components/ClientsSection";
+import ConstellationBackground from "@/components/ConstellationBackground";
 import useTypingEffect from "@/hooks/useTypingEffect";
 import useCountUp from "@/hooks/useCountUp";
 import logo from "@/assets/logo.png";
@@ -68,6 +69,7 @@ const Index = () => {
       {/* Hero */}
       <section className="relative min-h-screen flex items-center overflow-hidden bg-grid">
         <div className="aurora" />
+        <ConstellationBackground />
         <div className="scan-line" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,hsl(222_95%_62%/0.12),transparent_50%)]" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,hsl(260_90%_66%/0.08),transparent_50%)]" />
