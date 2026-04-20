@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import ScrollReveal from "@/components/ScrollReveal";
+import ClientsSection from "@/components/ClientsSection";
 import useTypingEffect from "@/hooks/useTypingEffect";
 import useCountUp from "@/hooks/useCountUp";
 import logo from "@/assets/logo.png";
@@ -66,9 +67,10 @@ const Index = () => {
 
       {/* Hero */}
       <section className="relative min-h-screen flex items-center overflow-hidden bg-grid">
+        <div className="aurora" />
         <div className="scan-line" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,hsl(210_100%_56%/0.08),transparent_50%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,hsl(190_95%_50%/0.05),transparent_50%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,hsl(222_95%_62%/0.12),transparent_50%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,hsl(260_90%_66%/0.08),transparent_50%)]" />
 
         <div className="container mx-auto px-6 relative z-10 py-32">
           <ScrollReveal>
@@ -227,6 +229,11 @@ const Index = () => {
           </div>
         </div>
       </section>
+
+      <div className="glow-line" />
+
+      {/* Our Clients */}
+      <ClientsSection />
 
       <div className="glow-line" />
 
