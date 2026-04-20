@@ -6,45 +6,47 @@
 
 @layer base {
   :root {
-    --background: 225 25% 5%;
-    --foreground: 210 40% 96%;
+    --background: 230 30% 4%;
+    --foreground: 210 40% 98%;
 
-    --card: 225 20% 8%;
-    --card-foreground: 210 40% 96%;
+    --card: 230 25% 7%;
+    --card-foreground: 210 40% 98%;
 
-    --popover: 225 20% 8%;
-    --popover-foreground: 210 40% 96%;
+    --popover: 230 25% 7%;
+    --popover-foreground: 210 40% 98%;
 
-    --primary: 210 100% 56%;
+    --primary: 222 95% 62%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 225 15% 14%;
-    --secondary-foreground: 210 40% 96%;
+    --secondary: 230 20% 12%;
+    --secondary-foreground: 210 40% 98%;
 
-    --muted: 225 15% 14%;
-    --muted-foreground: 215 15% 55%;
+    --muted: 230 20% 12%;
+    --muted-foreground: 220 14% 62%;
 
-    --accent: 190 95% 50%;
-    --accent-foreground: 225 25% 5%;
+    --accent: 195 100% 55%;
+    --accent-foreground: 230 30% 4%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 225 15% 16%;
-    --input: 225 15% 16%;
-    --ring: 210 100% 56%;
+    --border: 230 20% 15%;
+    --input: 230 20% 15%;
+    --ring: 222 95% 62%;
 
-    --radius: 0.75rem;
+    --radius: 0.875rem;
 
     /* Custom tokens */
-    --glow-blue: 210 100% 56%;
-    --glow-cyan: 190 95% 50%;
-    --surface-glass: 225 20% 10%;
-    --surface-glass-border: 225 15% 18%;
-    --steel: 215 15% 45%;
-    --steel-light: 215 12% 60%;
-    --gradient-start: 210 100% 56%;
-    --gradient-end: 190 95% 50%;
+    --glow-blue: 222 95% 62%;
+    --glow-cyan: 195 100% 55%;
+    --glow-violet: 260 90% 66%;
+    --surface-glass: 230 25% 9%;
+    --surface-glass-border: 230 20% 18%;
+    --steel: 220 14% 52%;
+    --steel-light: 220 14% 70%;
+    --gradient-start: 222 95% 62%;
+    --gradient-mid: 260 90% 66%;
+    --gradient-end: 195 100% 55%;
   }
 }
 
@@ -96,24 +98,82 @@
 
 /* Glow effects */
 .glow-blue {
-  box-shadow: 0 0 40px hsl(210 100% 56% / 0.15), 0 0 80px hsl(210 100% 56% / 0.05);
+  box-shadow: 0 0 40px hsl(222 95% 62% / 0.35), 0 0 80px hsl(260 90% 66% / 0.15);
 }
 
 .glow-text {
-  text-shadow: 0 0 40px hsl(210 100% 56% / 0.4);
+  text-shadow: 0 0 40px hsl(222 95% 62% / 0.5);
 }
 
 .glow-line {
   height: 1px;
-  background: linear-gradient(90deg, transparent, hsl(210 100% 56% / 0.6), hsl(190 95% 50% / 0.6), transparent);
+  background: linear-gradient(90deg, transparent, hsl(222 95% 62% / 0.7), hsl(260 90% 66% / 0.6), hsl(195 100% 55% / 0.7), transparent);
+}
+
+/* Aurora background */
+.aurora {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.aurora::before, .aurora::after {
+  content: '';
+  position: absolute;
+  width: 60vw;
+  height: 60vw;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.35;
+  animation: aurora-move 18s ease-in-out infinite;
+}
+.aurora::before {
+  background: hsl(222 95% 62% / 0.5);
+  top: -20%;
+  left: -10%;
+}
+.aurora::after {
+  background: hsl(260 90% 66% / 0.4);
+  bottom: -25%;
+  right: -10%;
+  animation-delay: -9s;
+}
+
+@keyframes aurora-move {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(5%, 8%) scale(1.15); }
+}
+
+/* Marquee fade mask */
+.marquee-mask {
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+}
+
+/* Shimmer */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.shimmer {
+  background: linear-gradient(90deg, transparent, hsl(222 95% 62% / 0.15), transparent);
+  background-size: 200% 100%;
+  animation: shimmer 3s linear infinite;
 }
 
 /* Gradient text */
 .text-gradient {
-  background: linear-gradient(135deg, hsl(210 100% 56%), hsl(190 95% 50%));
+  background: linear-gradient(135deg, hsl(222 95% 70%), hsl(260 90% 70%), hsl(195 100% 60%));
+  background-size: 200% 200%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  animation: gradient-shift 8s ease infinite;
+}
+
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
 }
 
 /* Animated gradient border */
@@ -138,8 +198,8 @@
   position: fixed;
   pointer-events: none;
   z-index: 0;
-  opacity: 0.02;
-  filter: grayscale(1) brightness(2);
+  opacity: 0.035;
+  filter: grayscale(1) brightness(2.2);
 }
 
 /* Scan line animation */
