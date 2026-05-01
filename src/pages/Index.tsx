@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import ScrollReveal from "@/components/ScrollReveal";
-import ClientsSection from "@/components/ClientsSection";
+
 import ConstellationBackground from "@/components/ConstellationBackground";
 import useTypingEffect from "@/hooks/useTypingEffect";
 import useCountUp from "@/hooks/useCountUp";
@@ -256,11 +256,6 @@ const Index = () => {
           </div>
         </div>
       </section>
-
-      <div className="glow-line" />
-
-      {/* Our Clients */}
-      <ClientsSection />
 
       <div className="glow-line" />
 
