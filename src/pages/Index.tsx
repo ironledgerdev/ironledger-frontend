@@ -27,15 +27,17 @@ const companies = [
     statusColor: "bg-emerald-500",
     tag: "Healthcare",
     logo: "https://cdn.builder.io/api/v1/image/assets%2Faf68e484decf46379ccbfc0f4be45e74%2F35b00f08674a45308869d5f3a08c0ee7?format=webp&width=200",
+    url: "https://medmap.co.za",
   },
   {
     name: "MyBusApp",
     description:
       "A transport platform designed to modernise public transit experiences for commuters.",
     status: "Coming Soon",
-    statusColor: "bg-amber-500",
+    statusColor: "bg-primary",
     tag: "Transport",
     logo: "https://cdn.builder.io/api/v1/image/assets%2Faf68e484decf46379ccbfc0f4be45e74%2Ff1b0c80ac4af4996976f433d172e5b5e?format=webp&width=800&height=1200",
+    url: "",
   },
   {
     name: "Snathi's Way Kitchen",
@@ -45,6 +47,7 @@ const companies = [
     statusColor: "bg-emerald-500",
     tag: "Food & Beverage",
     logo: "https://cdn.builder.io/api/v1/image/assets%2F4beb1a65c59a4717bcf4ed8127e58cae%2Fca2f9711b86142548261422127b3b91e?format=webp&width=400&height=300",
+    url: "https://snathiswaykitchen.co.za",
   },
   {
     name: "GTK People Partners",
@@ -54,24 +57,27 @@ const companies = [
     statusColor: "bg-emerald-500",
     tag: "HR & Recruitment",
     logo: "https://cdn.builder.io/api/v1/image/assets%2Faf68e484decf46379ccbfc0f4be45e74%2Fb6e0e84606394ae4926dc19e95311903?format=webp&width=100",
+    url: "https://gtkpeoplepartners.co.za",
   },
   {
     name: "Onus Tempest",
     description:
       "Custom corporate website with bold brand storytelling and a conversion-focused layout.",
-    status: "Live",
-    statusColor: "bg-emerald-500",
+    status: "Coming Soon",
+    statusColor: "bg-primary",
     tag: "Brand & Identity",
     logo: "",
+    url: "",
   },
   {
     name: "K and K Pty Ltd",
     description:
       "Professional business website built for credibility, lead generation, and growth.",
-    status: "Live",
-    statusColor: "bg-emerald-500",
+    status: "Coming Soon",
+    statusColor: "bg-primary",
     tag: "Business Services",
     logo: "",
+    url: "",
   },
 ];
 
