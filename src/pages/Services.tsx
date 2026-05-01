@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import ScrollReveal from "@/components/ScrollReveal";
-import { Globe, Code, Layers, Wrench, ArrowRight, CheckCircle } from "lucide-react";
+import { Globe, Code, Layers, Wrench, ArrowRight, CheckCircle, Megaphone } from "lucide-react";
 import logo from "@/assets/logo.png";
 
 const services = [
@@ -28,6 +28,12 @@ const services = [
     title: "Maintenance & Support",
     description: "Ongoing technical support, monitoring, and iterative improvements. Keep your platform secure, fast, and evolving.",
     features: ["24/7 Monitoring", "Security Patches", "Performance Tuning", "Feature Updates"],
+  },
+  {
+    icon: Megaphone,
+    title: "Digital Marketing",
+    description: "Build and amplify your brand across digital channels. From strategy to execution, we help you reach and engage your audience.",
+    features: ["Social Media Strategy", "Content Creation", "Brand Presence", "Business Cards & Collateral"],
   },
 ];
 
