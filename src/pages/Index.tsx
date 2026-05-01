@@ -247,36 +247,52 @@ const Index = () => {
           </ScrollReveal>
 
           <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-            {companies.map((c, i) => (
-              <ScrollReveal key={c.name} delay={i * 100}>
-                <div className="glass-card rounded-xl p-8 hover-lift transition-all duration-300 h-full flex flex-col gradient-border">
-                  <div className="flex items-center justify-between mb-6">
-                    <span className="text-xs font-mono text-steel uppercase tracking-wider px-3 py-1 rounded-full bg-secondary">
-                      {c.tag}
-                    </span>
-                    <div className="flex items-center gap-2">
-                      <span className={`w-2 h-2 rounded-full ${c.statusColor} ${c.status === "Live" ? "pulse-live" : ""}`} />
-                      <span className="text-xs font-mono text-steel">{c.status}</span>
-                    </div>
-                  </div>
-                  {c.logo && (
-                    <div className="mb-4 h-12 flex items-center">
-                      <img src={c.logo} alt={c.name} className="h-full w-auto object-contain" />
-                    </div>
-                  )}
-                  <h3 className="text-2xl font-bold text-foreground">{c.name}</h3>
-                  <p className="mt-3 text-sm text-steel-light text-pretty flex-1 leading-relaxed">
-                    {c.description}
-                  </p>
-                  <Link
-                    to="/companies"
-                    className="inline-flex items-center gap-1.5 mt-6 text-sm font-medium text-primary hover:text-accent transition-colors"
+            {companies.map((c, i) => {
+              const isLive = c.status === "Live";
+              return (
+                <ScrollReveal key={c.name} delay={i * 100}>
+                  <div
+                    className={`glass-card rounded-xl p-8 hover-lift transition-all duration-300 h-full flex flex-col gradient-border ${
+                      !isLive ? "ring-1 ring-primary/40 bg-primary/[0.04]" : ""
+                    }`}
                   >
-                    Learn more <ExternalLink size={14} />
-                  </Link>
-                </div>
-              </ScrollReveal>
-            ))}
+                    <div className="flex items-center justify-between mb-6">
+                      <span className="text-xs font-mono text-steel uppercase tracking-wider px-3 py-1 rounded-full bg-secondary">
+                        {c.tag}
+                      </span>
+                      <div className="flex items-center gap-2">
+                        <span className={`w-2 h-2 rounded-full ${c.statusColor} pulse-live`} />
+                        <span className={`text-xs font-mono ${isLive ? "text-steel" : "text-primary"}`}>{c.status}</span>
+                      </div>
+                    </div>
+                    {c.logo && (
+                      <div className="mb-4 h-12 flex items-center">
+                        <img src={c.logo} alt={c.name} className="h-full w-auto object-contain" />
+                      </div>
+                    )}
+                    <h3 className="text-2xl font-bold text-foreground">{c.name}</h3>
+                    <p className="mt-3 text-sm text-steel-light text-pretty flex-1 leading-relaxed">
+                      {c.description}
+                    </p>
+                    {isLive && c.url ? (
+                      <a
+                        href={c.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 mt-6 text-sm font-medium text-primary hover:text-accent transition-colors"
+                      >
+                        Visit Site <ExternalLink size={14} />
+                      </a>
+                    ) : (
+                      <span className="inline-flex items-center gap-1.5 mt-6 text-sm font-mono text-primary">
+                        <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
+                        Launching soon
+                      </span>
+                    )}
+                  </div>
+                </ScrollReveal>
+              );
+            })}
           </div>
         </div>
       </section>
