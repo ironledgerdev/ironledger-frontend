@@ -26,6 +26,7 @@ const companies = [
     status: "Live",
     statusColor: "bg-emerald-500",
     tag: "Healthcare",
+    logo: "https://cdn.builder.io/api/v1/image/assets%2Faf68e484decf46379ccbfc0f4be45e74%2F35b00f08674a45308869d5f3a08c0ee7?format=webp&width=200",
   },
   {
     name: "MyBusApp",
@@ -34,6 +35,25 @@ const companies = [
     status: "Coming Soon",
     statusColor: "bg-amber-500",
     tag: "Transport",
+    logo: "https://cdn.builder.io/api/v1/image/assets%2Faf68e484decf46379ccbfc0f4be45e74%2Ff1b0c80ac4af4996976f433d172e5b5e?format=webp&width=800&height=1200",
+  },
+  {
+    name: "Snathi's Way Kitchen",
+    description:
+      "Premium catering services for corporate events and functions. Bringing authentic flavors and professional service to your business gatherings.",
+    status: "Live",
+    statusColor: "bg-emerald-500",
+    tag: "Food & Beverage",
+    logo: "https://cdn.builder.io/api/v1/image/assets%2F4beb1a65c59a4717bcf4ed8127e58cae%2Fca2f9711b86142548261422127b3b91e?format=webp&width=400&height=300",
+  },
+  {
+    name: "GTK People Partners",
+    description:
+      "A leading HR and recruitment solutions provider specializing in talent acquisition and workforce management.",
+    status: "Live",
+    statusColor: "bg-emerald-500",
+    tag: "HR & Recruitment",
+    logo: "https://cdn.builder.io/api/v1/image/assets%2Faf68e484decf46379ccbfc0f4be45e74%2Fb6e0e84606394ae4926dc19e95311903?format=webp&width=100",
   },
 ];
 
@@ -187,7 +207,7 @@ const Index = () => {
 
       <div className="glow-line" />
 
-      {/* Our Companies */}
+      {/* Our Clients */}
       <section className="py-28 md:py-36 relative bg-grid-fine">
         <div className="container mx-auto px-6">
           <ScrollReveal className="text-center mb-16">
@@ -195,7 +215,7 @@ const Index = () => {
               // portfolio
             </span>
             <h2 className="text-3xl md:text-5xl font-bold mt-4 text-balance">
-              Our Companies
+              Our Clients
             </h2>
             <p className="mt-4 text-steel-light max-w-lg mx-auto text-pretty">
               Digital platforms solving real-world problems at scale.
@@ -215,6 +235,11 @@ const Index = () => {
                       <span className="text-xs font-mono text-steel">{c.status}</span>
                     </div>
                   </div>
+                  {c.logo && (
+                    <div className="mb-4 h-12 flex items-center">
+                      <img src={c.logo} alt={c.name} className="h-full w-auto object-contain" />
+                    </div>
+                  )}
                   <h3 className="text-2xl font-bold text-foreground">{c.name}</h3>
                   <p className="mt-3 text-sm text-steel-light text-pretty flex-1 leading-relaxed">
                     {c.description}

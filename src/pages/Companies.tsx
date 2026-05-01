@@ -12,6 +12,7 @@ const companies = [
     statusColor: "bg-emerald-500",
     tag: "Healthcare",
     techs: ["React", "Node.js", "PostgreSQL"],
+    logo: "https://cdn.builder.io/api/v1/image/assets%2Faf68e484decf46379ccbfc0f4be45e74%2F35b00f08674a45308869d5f3a08c0ee7?format=webp&width=200",
   },
   {
     name: "MyBusApp",
@@ -20,6 +21,25 @@ const companies = [
     statusColor: "bg-amber-500",
     tag: "Transport",
     techs: ["React Native", "Cloud", "Maps"],
+    logo: "https://cdn.builder.io/api/v1/image/assets%2Faf68e484decf46379ccbfc0f4be45e74%2Ff1b0c80ac4af4996976f433d172e5b5e?format=webp&width=800&height=1200",
+  },
+  {
+    name: "Snathi's Way Kitchen",
+    description: "Premium catering services for corporate events and functions. Bringing authentic flavors and professional service to your business gatherings. From intimate meetings to large-scale corporate events, we deliver excellence.",
+    status: "Live",
+    statusColor: "bg-emerald-500",
+    tag: "Food & Beverage",
+    techs: ["React", "Node.js", "Stripe"],
+    logo: "https://cdn.builder.io/api/v1/image/assets%2F4beb1a65c59a4717bcf4ed8127e58cae%2Fca2f9711b86142548261422127b3b91e?format=webp&width=400&height=300",
+  },
+  {
+    name: "GTK People Partners",
+    description: "A leading HR and recruitment solutions provider specializing in talent acquisition and workforce management. Connecting businesses with top talent across industries.",
+    status: "Live",
+    statusColor: "bg-emerald-500",
+    tag: "HR & Recruitment",
+    techs: ["React", "Node.js", "PostgreSQL"],
+    logo: "https://cdn.builder.io/api/v1/image/assets%2Faf68e484decf46379ccbfc0f4be45e74%2Fb6e0e84606394ae4926dc19e95311903?format=webp&width=100",
   },
 ];
 
@@ -34,7 +54,7 @@ const Companies = () => (
         <ScrollReveal>
           <span className="text-xs font-mono text-primary uppercase tracking-[0.2em]">// portfolio</span>
           <h1 className="text-5xl md:text-7xl font-black mt-4 text-balance">
-            Our <span className="text-gradient">Companies</span>
+            Our <span className="text-gradient">Clients</span>
           </h1>
           <p className="mt-6 text-lg text-steel-light max-w-xl text-pretty">
             Digital platforms solving real-world problems across industries.
@@ -60,6 +80,11 @@ const Companies = () => (
                     <span className="text-xs font-mono text-steel">{c.status}</span>
                   </div>
                 </div>
+                {c.logo && (
+                  <div className="mb-4 h-12 flex items-center">
+                    <img src={c.logo} alt={c.name} className="h-full w-auto object-contain" />
+                  </div>
+                )}
                 <h3 className="text-2xl font-bold text-foreground">{c.name}</h3>
                 <p className="mt-3 text-sm text-steel-light text-pretty flex-1 leading-relaxed">{c.description}</p>
                 <div className="flex flex-wrap gap-2 mt-4">
