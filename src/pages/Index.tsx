@@ -24,7 +24,7 @@ const companies = [
     status: "Live",
     statusColor: "bg-emerald-500",
     tag: "Healthcare",
-    logo: "https://cdn.builder.io/api/v1/image/assets%2F4beb1a65c59a4717bcf4ed8127e58cae%2Fca2f9711b86142548261422127b3b91e?format=webp&width=400&height=300",
+    logo: "https://cdn.builder.io/api/v1/image/assets%2Faf68e484decf46379ccbfc0f4be45e74%2F35b00f08674a45308869d5f3a08c0ee7?format=webp&width=200",
   },
   {
     name: "MyBusApp",
@@ -33,12 +33,12 @@ const companies = [
     status: "Coming Soon",
     statusColor: "bg-amber-500",
     tag: "Transport",
-    logo: "https://cdn.builder.io/api/v1/image/assets%2Faf68e484decf46379ccbfc0f4be45e74%2Fb6e0e84606394ae4926dc19e95311903?format=webp&width=100",
+    logo: "https://cdn.builder.io/api/v1/image/assets%2Faf68e484decf46379ccbfc0f4be45e74%2Ff1b0c80ac4af4996976f433d172e5b5e?format=webp&width=800&height=1200",
   },
   {
     name: "Snathi's Way Kitchen",
     description:
-      "A culinary platform offering authentic recipes and food experiences. Bringing local flavors and traditions to the digital age.",
+      "Premium catering services for corporate events and functions. Bringing authentic flavors and professional service to your business gatherings.",
     status: "Live",
     statusColor: "bg-emerald-500",
     tag: "Food & Beverage",
