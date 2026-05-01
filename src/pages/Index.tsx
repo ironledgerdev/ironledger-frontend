@@ -55,6 +55,24 @@ const companies = [
     tag: "HR & Recruitment",
     logo: "https://cdn.builder.io/api/v1/image/assets%2Faf68e484decf46379ccbfc0f4be45e74%2Fb6e0e84606394ae4926dc19e95311903?format=webp&width=100",
   },
+  {
+    name: "Onus Tempest",
+    description:
+      "Custom corporate website with bold brand storytelling and a conversion-focused layout.",
+    status: "Live",
+    statusColor: "bg-emerald-500",
+    tag: "Brand & Identity",
+    logo: "",
+  },
+  {
+    name: "K and K Pty Ltd",
+    description:
+      "Professional business website built for credibility, lead generation, and growth.",
+    status: "Live",
+    statusColor: "bg-emerald-500",
+    tag: "Business Services",
+    logo: "",
+  },
 ];
 
 const services = [
