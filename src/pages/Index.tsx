@@ -27,15 +27,17 @@ const companies = [
     statusColor: "bg-emerald-500",
     tag: "Healthcare",
     logo: "https://cdn.builder.io/api/v1/image/assets%2Faf68e484decf46379ccbfc0f4be45e74%2F35b00f08674a45308869d5f3a08c0ee7?format=webp&width=200",
+    url: "https://medmap.co.za",
   },
   {
     name: "MyBusApp",
     description:
       "A transport platform designed to modernise public transit experiences for commuters.",
     status: "Coming Soon",
-    statusColor: "bg-amber-500",
+    statusColor: "bg-primary",
     tag: "Transport",
     logo: "https://cdn.builder.io/api/v1/image/assets%2Faf68e484decf46379ccbfc0f4be45e74%2Ff1b0c80ac4af4996976f433d172e5b5e?format=webp&width=800&height=1200",
+    url: "",
   },
   {
     name: "Snathi's Way Kitchen",
@@ -45,6 +47,7 @@ const companies = [
     statusColor: "bg-emerald-500",
     tag: "Food & Beverage",
     logo: "https://cdn.builder.io/api/v1/image/assets%2F4beb1a65c59a4717bcf4ed8127e58cae%2Fca2f9711b86142548261422127b3b91e?format=webp&width=400&height=300",
+    url: "https://snathiswaykitchen.co.za",
   },
   {
     name: "GTK People Partners",
@@ -54,24 +57,27 @@ const companies = [
     statusColor: "bg-emerald-500",
     tag: "HR & Recruitment",
     logo: "https://cdn.builder.io/api/v1/image/assets%2Faf68e484decf46379ccbfc0f4be45e74%2Fb6e0e84606394ae4926dc19e95311903?format=webp&width=100",
+    url: "https://gtkpeoplepartners.co.za",
   },
   {
     name: "Onus Tempest",
     description:
       "Custom corporate website with bold brand storytelling and a conversion-focused layout.",
-    status: "Live",
-    statusColor: "bg-emerald-500",
+    status: "Coming Soon",
+    statusColor: "bg-primary",
     tag: "Brand & Identity",
     logo: "",
+    url: "",
   },
   {
     name: "K and K Pty Ltd",
     description:
       "Professional business website built for credibility, lead generation, and growth.",
-    status: "Live",
-    statusColor: "bg-emerald-500",
+    status: "Coming Soon",
+    statusColor: "bg-primary",
     tag: "Business Services",
     logo: "",
+    url: "",
   },
 ];
 
@@ -241,36 +247,52 @@ const Index = () => {
           </ScrollReveal>
 
           <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-            {companies.map((c, i) => (
-              <ScrollReveal key={c.name} delay={i * 100}>
-                <div className="glass-card rounded-xl p-8 hover-lift transition-all duration-300 h-full flex flex-col gradient-border">
-                  <div className="flex items-center justify-between mb-6">
-                    <span className="text-xs font-mono text-steel uppercase tracking-wider px-3 py-1 rounded-full bg-secondary">
-                      {c.tag}
-                    </span>
-                    <div className="flex items-center gap-2">
-                      <span className={`w-2 h-2 rounded-full ${c.statusColor} ${c.status === "Live" ? "pulse-live" : ""}`} />
-                      <span className="text-xs font-mono text-steel">{c.status}</span>
-                    </div>
-                  </div>
-                  {c.logo && (
-                    <div className="mb-4 h-12 flex items-center">
-                      <img src={c.logo} alt={c.name} className="h-full w-auto object-contain" />
-                    </div>
-                  )}
-                  <h3 className="text-2xl font-bold text-foreground">{c.name}</h3>
-                  <p className="mt-3 text-sm text-steel-light text-pretty flex-1 leading-relaxed">
-                    {c.description}
-                  </p>
-                  <Link
-                    to="/companies"
-                    className="inline-flex items-center gap-1.5 mt-6 text-sm font-medium text-primary hover:text-accent transition-colors"
+            {companies.map((c, i) => {
+              const isLive = c.status === "Live";
+              return (
+                <ScrollReveal key={c.name} delay={i * 100}>
+                  <div
+                    className={`glass-card rounded-xl p-8 hover-lift transition-all duration-300 h-full flex flex-col gradient-border ${
+                      !isLive ? "ring-1 ring-primary/40 bg-primary/[0.04]" : ""
+                    }`}
                   >
-                    Learn more <ExternalLink size={14} />
-                  </Link>
-                </div>
-              </ScrollReveal>
-            ))}
+                    <div className="flex items-center justify-between mb-6">
+                      <span className="text-xs font-mono text-steel uppercase tracking-wider px-3 py-1 rounded-full bg-secondary">
+                        {c.tag}
+                      </span>
+                      <div className="flex items-center gap-2">
+                        <span className={`w-2 h-2 rounded-full ${c.statusColor} pulse-live`} />
+                        <span className={`text-xs font-mono ${isLive ? "text-steel" : "text-primary"}`}>{c.status}</span>
+                      </div>
+                    </div>
+                    {c.logo && (
+                      <div className="mb-4 h-12 flex items-center">
+                        <img src={c.logo} alt={c.name} className="h-full w-auto object-contain" />
+                      </div>
+                    )}
+                    <h3 className="text-2xl font-bold text-foreground">{c.name}</h3>
+                    <p className="mt-3 text-sm text-steel-light text-pretty flex-1 leading-relaxed">
+                      {c.description}
+                    </p>
+                    {isLive && c.url ? (
+                      <a
+                        href={c.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 mt-6 text-sm font-medium text-primary hover:text-accent transition-colors"
+                      >
+                        Visit Site <ExternalLink size={14} />
+                      </a>
+                    ) : (
+                      <span className="inline-flex items-center gap-1.5 mt-6 text-sm font-mono text-primary">
+                        <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
+                        Launching soon
+                      </span>
+                    )}
+                  </div>
+                </ScrollReveal>
+              );
+            })}
           </div>
         </div>
       </section>
